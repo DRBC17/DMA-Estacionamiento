@@ -5,8 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Software_Estacionamiento"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
         
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF" 
+       
+        fw:AcrylicWindow.Enabled="True"
+        fw:AcrylicWindow.AcrylicWindowStyle="None"
+        Title="Estacionamiento" Height="450" Width="800" AllowsTransparency="True" BorderThickness="0" WindowStyle="None" ResizeMode="NoResize"  WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="#000000" Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="43*"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <Border Name="BarraSuperior" Background="#000000" Grid.Column="1" MouseLeftButtonDown="BarraSuperior_MouseLeftButtonDown">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Name="btnMin" Width="auto"  BorderThickness="0" Visibility="Visible">
+                    <materialDesign:PackIcon Kind="WindowMinimize" Foreground="White" />
+                </Button>
+                <Button Name="btnRest" Width="auto" BorderThickness="0" Visibility="Collapsed">
+                    <materialDesign:PackIcon Kind="WindowRestore" Foreground="White" />
+                </Button>
+                <Button Name="btnMax" Width="auto" BorderThickness="0" Visibility="Visible">
+                    <materialDesign:PackIcon Kind="WindowMaximize" Foreground="White" />
+                </Button>
+                <Button Name="btnCerrar" Width="auto" BorderThickness="0" Visibility="Visible">
+                    <materialDesign:PackIcon Kind="WindowClose" Foreground="White" />
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <Border Name="BarraSuperior2" Grid.Column="0" MouseLeftButtonDown="BarraSuperior2_MouseLeftButtonDown" HorizontalAlignment="Center">
+            <TextBlock FontSize="25">Estacionamiento</TextBlock>
+        </Border>
     </Grid>
 </Window>
