@@ -14,7 +14,7 @@
         Title="Estacionamiento" Height="450" Width="800" AllowsTransparency="True" BorderThickness="0" WindowStyle="None" ResizeMode="NoResize"  WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="350"/>
+            <ColumnDefinition Width="250"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -47,6 +47,19 @@
 
         <Border Name="BarraSuperior2" Grid.Column="0" MouseLeftButtonDown="BarraSuperior2_MouseLeftButtonDown" HorizontalAlignment="Center">
             <TextBlock FontSize="25">Estacionamiento</TextBlock>
+        </Border>
+
+        <Border Grid.Column="0" Grid.Row="1" >
+            <StackPanel Orientation="Vertical">
+                <Button Width="auto" Height="60">
+                    <StackPanel Orientation="Horizontal" >
+                        <materialDesign:PackIcon Kind="Home" Foreground="White" Margin="5" Width="30" Height="30"/>
+                        <TextBlock Foreground="White" VerticalAlignment="Center" FontSize="20">Inicio</TextBlock>
+                    </StackPanel>
+                </Button>
+                
+            </StackPanel>
+            
         </Border>
     </Grid>
 </Window>
