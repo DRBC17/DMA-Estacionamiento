@@ -62,3 +62,33 @@ CREATE TABLE Est.Pago_Vehiculo
 )
 GO
 
+/* Relaciones*/
+
+/*Tabla de Vehiculo*/
+--Llaves Foraneas
+ALTER TABLE Estacionamiento.Vehiculo
+	ADD CONSTRAINT FK_Vehiculo$Tiene$TipoVehiculo
+	FOREIGN KEY (tipoVehiculo) REFERENCES Estacionamiento.TipoVehiculo(id)
+	ON UPDATE CASCADE
+	ON DELETE NO ACTION
+GO
+
+/*Tabla de Pago de Vehiculo*/
+ALTER TABLE Estacionamiento.Pago_Vehiculo
+	ADD CONSTRAINT FK_PagoVehiculo$SeLeHaceAUn$Vehiculo
+	FOREIGN KEY (vehiculo) REFERENCES Estacionamiento.Vehiculo(id)
+	ON UPDATE CASCADE
+	ON DELETE NO ACTION
+GO
+
+/*Tabla de Tipo de Vehiculos */
+--Insercion de los tipos de vehiculos
+INSERT INTO Est.Tipo_Vehiculo (tipo)
+VALUES ('Turismo'),
+	   ('Pick-Up'),
+	   ('Camioneta'),
+	   ('Camion'),
+	   ('Autobus'),
+	   ('Rastra'),
+	   ('Motocicleta')
+GO
