@@ -11,7 +11,7 @@
        
         fw:AcrylicWindow.Enabled="True"
         fw:AcrylicWindow.AcrylicWindowStyle="None"
-        Title="Estacionamiento" Height="450" Width="900" AllowsTransparency="True" BorderThickness="0" WindowStyle="None" ResizeMode="NoResize"  WindowStartupLocation="CenterScreen">
+        Title="Estacionamiento" Height="600" Width="1000" AllowsTransparency="True" BorderThickness="0" WindowStyle="None" ResizeMode="NoResize"  WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
@@ -23,6 +23,10 @@
         </Grid.RowDefinitions>
 
         <Grid Background="#000000" Grid.Column="1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="39*"/>
+                <RowDefinition Height="170*"/>
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="43*"/>
@@ -30,59 +34,63 @@
         </Grid>
         <Border Name="BarraSuperior" Background="#000000" Grid.Column="1" MouseLeftButtonDown="BarraSuperior_MouseLeftButtonDown">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Name="btnMin" Width="auto"  BorderThickness="0" Visibility="Visible">
+                <Button Name="btnMin" Width="auto"  BorderThickness="0" Visibility="Visible" Click="BtnMin_Click">
                     <materialDesign:PackIcon Kind="WindowMinimize" Foreground="White" />
                 </Button>
-                <Button Name="btnRest" Width="auto" BorderThickness="0" Visibility="Collapsed">
+                <Button Name="btnRest" Width="auto" BorderThickness="0" Visibility="Collapsed" Click="BtnRest_Click">
                     <materialDesign:PackIcon Kind="WindowRestore" Foreground="White" />
                 </Button>
-                <Button Name="btnMax" Width="auto" BorderThickness="0" Visibility="Visible">
+                <Button Name="btnMax" Width="auto" BorderThickness="0" Visibility="Visible" Click="BtnMax_Click">
                     <materialDesign:PackIcon Kind="WindowMaximize" Foreground="White" />
                 </Button>
-                <Button Name="btnCerrar" Width="auto" BorderThickness="0" Visibility="Visible">
+                <Button Name="btnCerrar" Width="auto" BorderThickness="0" Visibility="Visible" Click="BtnCerrar_Click">
                     <materialDesign:PackIcon Kind="WindowClose" Foreground="White" />
                 </Button>
             </StackPanel>
         </Border>
 
         <Border Name="BarraSuperior2" Grid.Column="0" MouseLeftButtonDown="BarraSuperior2_MouseLeftButtonDown" HorizontalAlignment="Center">
-            <TextBlock FontSize="25">Estacionamiento</TextBlock>
+            <TextBlock FontSize="24" FontFamily="Segoe UI">Estacionamiento</TextBlock>
+        
         </Border>
 
-        <Border Grid.Column="0" Grid.Row="1" >
+        <Border Grid.Column="0" Grid.Row="1" Margin="0 50 0 0" >
             <StackPanel Orientation="Vertical">
-                <Button Width="auto" Height="auto" ToolTip="Ingresar los Vehiculos al Sistema">
-                    <StackPanel Orientation="Horizontal" >
+                <Button Name="btnIngVehiculo" Width="300" Height="auto" ToolTip="Ingresar los Vehiculos al Sistema" Click="BtnIngVehiculo_Click">
+                    <StackPanel Orientation="Horizontal" Margin="0 0 50 0">
                         <materialDesign:PackIcon Kind="AddCircle" Foreground="White" Margin="5" Width="30" Height="30"/>
-                        <TextBlock Foreground="White" VerticalAlignment="Center" FontSize="20">Ingresar Vehiculos</TextBlock>
+                        <TextBlock Foreground="White" FontFamily="Segoe UI" VerticalAlignment="Center" FontSize="20">Ingresar Vehiculos</TextBlock>
                         
                     </StackPanel>
                     
                 </Button>
 
-                <Button Width="auto" Height="auto">
-                    <StackPanel Orientation="Horizontal" >
+                <Button Width="300" Height="auto" Name="btnRealizarPago" Click="BtnRealizarPago_Click"  HorizontalAlignment="Left">
+                    <StackPanel Orientation="Horizontal" Margin="0 0 95 0">
                         <materialDesign:PackIcon Kind="Cash" Foreground="White" Margin="5" Width="30" Height="30"/>
-                        <TextBlock Foreground="White" VerticalAlignment="Center" FontSize="20">Realizar Pago</TextBlock>
+                        <TextBlock Foreground="White" FontFamily="Segoe UI" VerticalAlignment="Center" FontSize="20">Realizar Pago</TextBlock>
                     </StackPanel>
 
                 </Button>
-                <Button Width="auto" Height="auto">
+                <Button Name="btnListarSalEnt" Width="300" Height="auto" Click="BtnListarSalEnt_Click" HorizontalAlignment="Left">
                     <StackPanel Orientation="Horizontal" >
                         <materialDesign:PackIcon Kind="Archive" Foreground="White" Margin="5" Width="30" Height="30"/>
-                        <TextBlock Foreground="White" VerticalAlignment="Center" FontSize="20">Listar Salidas y Entradas</TextBlock>
+                        <TextBlock Foreground="White" FontFamily="Segoe UI" VerticalAlignment="Center" FontSize="20">Listar Salidas y Entradas</TextBlock>
                     </StackPanel>
 
                 </Button>
-                <Button Width="auto" Height="auto">
-                    <StackPanel Orientation="Horizontal" >
+                <Button Width="300" Height="auto" Name="btnRealizarReporte" Click="BtnRealizarReporte_Click"  HorizontalAlignment="Left" >
+                    <StackPanel Orientation="Horizontal" Margin="0 0 60 0" >
                         <materialDesign:PackIcon Kind="FileReport" Foreground="White" Margin="5" Width="30" Height="30"/>
-                        <TextBlock Foreground="White" VerticalAlignment="Center" FontSize="20">Realizar Reportes</TextBlock>
+                        <TextBlock Foreground="White" FontFamily="Segoe UI" VerticalAlignment="Center" FontSize="20">Realizar Reportes</TextBlock>
                     </StackPanel>
 
                 </Button>
             </StackPanel>
             
         </Border>
+        <Grid x:Name="PanelPrincipal" Grid.Row="1" Grid.Column="2">
+            
+        </Grid>
     </Grid>
 </Window>
