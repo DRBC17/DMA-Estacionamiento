@@ -41,7 +41,7 @@ CREATE TABLE Est.Vehiculo
 	id INT IDENTITY (1, 1) NOT NULL
 		CONSTRAINT PK_Vehiculo_Estacionamiento_id
 		PRIMARY KEY CLUSTERED (id),
-	tipoVehiculo INT NOT NULL,
+	tipo_Vehiculo INT NOT NULL,
 	placa NVARCHAR(8) NOT NULL UNIQUE,
 		CONSTRAINT CHK_Formato_Placa_Vehiculo
 		CHECK (placa LIKE '[A-Z][A-Z][A-Z]-[0-9][0-9][0-9][0-9]'),
@@ -57,26 +57,24 @@ CREATE TABLE Est.Pago_Vehiculo
 		PRIMARY KEY CLUSTERED (id),
 	vehiculo INT NOT NULL,
 	fechaHoraEntrada DATETIME NOT NULL,
-	fechaHoraSalida DATETIME NOT NULL,
-	total DECIMAL NOT NULL
+	fechaHoraSalida DATETIME NOT NULL
 )
 GO
 
 /* Relaciones*/
-
 /*Tabla de Vehiculo*/
 --Llaves Foraneas
-ALTER TABLE Estacionamiento.Vehiculo
-	ADD CONSTRAINT FK_Vehiculo$Tiene$TipoVehiculo
-	FOREIGN KEY (tipoVehiculo) REFERENCES Estacionamiento.TipoVehiculo(id)
+ALTER TABLE Est.Vehiculo
+	ADD CONSTRAINT FK_Vehiculo$Tiene$Tipo_Vehiculo
+	FOREIGN KEY (tipo_Vehiculo) REFERENCES Est.Tipo_Vehiculo(id)
 	ON UPDATE CASCADE
 	ON DELETE NO ACTION
 GO
 
 /*Tabla de Pago de Vehiculo*/
-ALTER TABLE Estacionamiento.Pago_Vehiculo
-	ADD CONSTRAINT FK_PagoVehiculo$SeLeHaceAUn$Vehiculo
-	FOREIGN KEY (vehiculo) REFERENCES Estacionamiento.Vehiculo(id)
+ALTER TABLE Est.Pago_Vehiculo
+	ADD CONSTRAINT FK_Pago_Vehiculo$SeLeHaceAUn$Vehiculo
+	FOREIGN KEY (vehiculo) REFERENCES Est.Vehiculo(id)
 	ON UPDATE CASCADE
 	ON DELETE NO ACTION
 GO
