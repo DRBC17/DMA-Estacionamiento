@@ -65,6 +65,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="EstacionamientoDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EstacionamientoDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ListarSalEnt.xaml.cs">
       <DependentUpon>ListarSalEnt.xaml</DependentUpon>
     </Compile>
@@ -124,6 +129,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="EstacionamientoDataSet.xsc">
+      <DependentUpon>EstacionamientoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="EstacionamientoDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EstacionamientoDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="EstacionamientoDataSet.xss">
+      <DependentUpon>EstacionamientoDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
