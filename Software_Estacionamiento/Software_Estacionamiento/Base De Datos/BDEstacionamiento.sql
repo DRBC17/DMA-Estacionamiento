@@ -45,7 +45,8 @@ CREATE TABLE Est.Vehiculo
 	placa NVARCHAR(8) NOT NULL UNIQUE,
 		CONSTRAINT CHK_Formato_Placa_Vehiculo
 		CHECK (placa LIKE '[A-Z][A-Z][A-Z]-[0-9][0-9][0-9][0-9]'),
-	estado BIT NOT NULL
+	estado BIT NOT NULL,
+	hora_Ingreso datetime NOT NULL
 )
 GO
 
