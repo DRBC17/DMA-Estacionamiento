@@ -45,13 +45,17 @@ namespace Software_Estacionamiento
 
         private void BtnIngVehiculo_Click(object sender, RoutedEventArgs e)
         {
+            IngVehiculo ventana = new IngVehiculo();
 
+            ventana.txtFecha.Text = DateTime.Now.ToString("hh:mm tt");
             try
             {
                 PanelPrincipal.Children.Add(_IngVehiculo);
                 PanelPrincipal.Children.Remove(_RealizarPago);
                 PanelPrincipal.Children.Remove(_RealizarReporte);
                 PanelPrincipal.Children.Remove(_ListarSalEnt);
+
+               
             }
             catch(Exception ex)
             {

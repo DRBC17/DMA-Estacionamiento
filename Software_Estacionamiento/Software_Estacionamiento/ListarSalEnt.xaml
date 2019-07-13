@@ -13,7 +13,16 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <TextBlock FontSize="45" Foreground="White">Listar Entradas y Salidas</TextBlock>
+            <TextBlock FontSize="45" Foreground="White" Margin="25 0 0 0">Listar Entradas y Salidas</TextBlock>
+        </Grid>
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock FontSize="24" Foreground="White" TextAlignment="Center" Margin="10">Listar:</TextBlock>
+                <ComboBox Width="150" Height="30" FontSize="24" Background="White" Foreground="Black"></ComboBox>
+                <ListViewItem Width="600" Height="auto" Background="White" Margin="10"></ListViewItem>
+                
+            </StackPanel>
+            
         </Grid>
     </Grid>
 </UserControl>
