@@ -19,7 +19,7 @@
         <Grid Grid.Row="0">
             <TextBlock FontSize="45" Foreground="White" Margin="25 0 0 0">Ingresar Vehiculos</TextBlock>
         </Grid>
-        <Grid Grid.Row="1" >
+        <Grid Grid.Row="1" HorizontalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="35.2"/>
                 <ColumnDefinition Width="46*"/>
@@ -27,18 +27,18 @@
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="14.8,20,0,0" Grid.Column="1">
                 <TextBlock Foreground="White" FontSize="24" Margin="0 0 0 10">Numero de Placa</TextBlock>
-                <TextBox FontSize="24" Width="200" Height="34" Background="White" Margin="0 0 0 25"></TextBox>
+                <TextBox FontSize="24" Width="200" Height="34" Background="White" Margin="0 0 0 25" Name="txtNumPlaca"></TextBox>
                 <TextBlock Foreground="White" FontSize="24" Margin="0 0 0 10">Tipo de Vehiculo</TextBlock>
-                <ComboBox FontSize="24" Width="200" Height="34" Background="White" Margin="0 0 0 25">
+                <ComboBox FontSize="24" Width="200" Height="34" Background="White" Margin="0 0 0 25" Name="txtTipoVehiculo">
 
                 </ComboBox>
                 <TextBlock Foreground="White" FontSize="24" >Hora de Ingreso</TextBlock>
                 <TextBlock  Name="txtFecha" FontSize="24" Width="120" Height="34" Background="White"  Foreground="Black"  TextAlignment="Center"></TextBlock>
 
-                <Button Margin="0 20 0 20" Height="auto">
-                    <StackPanel Orientation="Horizontal" Height="50" Width="auto">
+                <Button Margin="0 20 0 20" Height="auto" Background="Gray">
+                    <StackPanel Orientation="Horizontal" Height="auto" Width="auto">
                         <materialDesign:PackIcon Kind="ContentSave"  Width="40" Height="30" Foreground="White"/>
-                        <TextBlock Foreground="White" FontSize="24">Guardar</TextBlock>
+                        <TextBlock Foreground="Black" FontSize="24">Guardar</TextBlock>
                     </StackPanel>
                 </Button>
             </StackPanel>
