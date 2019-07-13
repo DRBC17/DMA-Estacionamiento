@@ -13,7 +13,24 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <TextBlock FontSize="45" Foreground="White">Ingresar Vehiculos</TextBlock>
+            <TextBlock FontSize="45" Foreground="White" Margin="25 0 0 0">Ingresar Vehiculos</TextBlock>
+        </Grid>
+        <Grid Grid.Row="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="35.2"/>
+                <ColumnDefinition Width="46*"/>
+                <ColumnDefinition Width="107*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="14.8,20,0,0" Grid.Column="1">
+                <TextBlock Foreground="White" FontSize="24" Margin="0 0 0 10">Numero de Placa</TextBlock>
+                <TextBox FontSize="24" Width="200" Height="34" Background="White" Margin="0 0 0 25"></TextBox>
+                <TextBlock Foreground="White" FontSize="24" Margin="0 0 0 10">Tipo de Vehiculo</TextBlock>
+                <ComboBox FontSize="24" Width="200" Height="34" Background="White" Margin="0 0 0 25">
+
+                </ComboBox>
+                <TextBlock Foreground="White" FontSize="24" >Hora de Ingreso</TextBlock>
+                <TextBlock  Name="txtFecha" FontSize="24" Width="120" Height="34" Background="White"  Foreground="Black"  TextAlignment="Center"></TextBlock>
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>

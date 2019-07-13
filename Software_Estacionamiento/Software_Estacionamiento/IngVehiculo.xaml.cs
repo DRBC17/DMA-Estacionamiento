@@ -25,7 +25,8 @@ namespace Software_Estacionamiento
         {
             InitializeComponent();
 
-
+            txtFecha.Text = DateTime.Now.ToString("hh:mm tt");
+            //FechaSys.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
         }
         public UserControl ParentControl { get; set; }
