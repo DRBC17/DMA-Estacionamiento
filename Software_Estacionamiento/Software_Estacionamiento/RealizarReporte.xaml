@@ -16,7 +16,7 @@
             <TextBlock FontSize="45" Foreground="White" Margin="25 0 0 0">Realizar Reporte</TextBlock>
         </Grid>
         <Grid Grid.Row="1" Margin="20">
-            <ListViewItem Background="White" Height="auto" Width="700"></ListViewItem>
+            <ListView Background="White" Height="auto" Width="700" Name="lvRealizarReporte"></ListView>
             
         </Grid>
     </Grid>
