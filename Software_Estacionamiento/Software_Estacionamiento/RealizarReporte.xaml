@@ -13,7 +13,11 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <TextBlock FontSize="45" Foreground="White">Realizar Reporte</TextBlock>
+            <TextBlock FontSize="45" Foreground="White" Margin="25 0 0 0">Realizar Reporte</TextBlock>
+        </Grid>
+        <Grid Grid.Row="1" Margin="20">
+            <ListViewItem Background="White" Height="auto" Width="700"></ListViewItem>
+            
         </Grid>
     </Grid>
 </UserControl>

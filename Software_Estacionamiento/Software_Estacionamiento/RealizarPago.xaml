@@ -13,7 +13,23 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <TextBlock FontSize="45" Foreground="White">Realizar Pago</TextBlock>
+            <TextBlock FontSize="45" Foreground="White" Margin="25 0 0 0">Realizar Pago</TextBlock>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Horizontal" Margin="15">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock TextAlignment="Center" Foreground="Black" Background="White" FontSize="20">Vehiculos Que Han Ingresado:</TextBlock>
+                    <ListViewItem Width="450" Height="auto"  Background="White"></ListViewItem>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="30">
+                    <TextBlock Foreground="White" FontSize="24" Margin="10" >Hora de Salida</TextBlock>
+                    <TextBlock  Name="txtFecha" FontSize="24" Width="120" Height="34" Background="White"  Foreground="Black"  TextAlignment="Center"></TextBlock>
+                    <TextBlock FontSize="24" Foreground="White" TextAlignment="Center" Margin="0 30 0 0">TOTAL:</TextBlock>
+                    <TextBlock Width="AUTO" Height="50" Foreground="White" FontSize="40" TextAlignment="Center">00.00</TextBlock>
+                    <Button Content="Pagar" Width="auto" Height="50" Foreground="Black" Background="Gray" FontSize="24" Margin="0 40 0 0"></Button>
+                </StackPanel>
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>
