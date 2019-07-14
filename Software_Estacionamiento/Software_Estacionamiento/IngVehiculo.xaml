@@ -27,9 +27,9 @@
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="14.8,20,0,0" Grid.Column="1">
                 <TextBlock Foreground="White" FontSize="24" Margin="0 0 0 10">Numero de Placa</TextBlock>
-                <TextBox FontSize="24" Width="200" Height="34" Background="White" Margin="0 0 0 25" Name="txtNumPlaca"></TextBox>
+                <TextBox ToolTip="Formato HND-1234" FontSize="24" Width="200" Height="auto" Background="White" Margin="0 0 0 25" Name="txtNumPlaca"></TextBox>
                 <TextBlock Foreground="White" FontSize="24" Margin="0 0 0 10">Tipo de Vehiculo</TextBlock>
-                <ComboBox FontSize="24" Width="200" Height="34" Background="White" Margin="0 0 0 25" Name="cbTipoVehiculo" >
+                <ComboBox FontSize="24" Width="200" Height="auto" Background="White" Margin="0 0 0 25" Name="cbTipoVehiculo">
 
                 </ComboBox>
                 <TextBlock Foreground="White" FontSize="24" >Hora de Ingreso</TextBlock>
