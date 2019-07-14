@@ -24,5 +24,10 @@ namespace Software_Estacionamiento
         {
             InitializeComponent();
         }
+
+        private void CbListar_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

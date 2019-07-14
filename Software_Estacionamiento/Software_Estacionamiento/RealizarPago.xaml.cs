@@ -23,6 +23,17 @@ namespace Software_Estacionamiento
         public RealizarPago()
         {
             InitializeComponent();
+            txtFecha.Text = DateTime.Now.ToString("hh:mm tt");
+        }
+
+        private void BtnPagar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LvPanelVehiculos_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
