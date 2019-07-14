@@ -30,7 +30,7 @@ namespace Software_Estacionamiento
             // Estacionamiento ConnectionString
             string connectionString = ConfigurationManager.ConnectionStrings["Software_Estacionamiento.Properties.Settings.EstacionamientoConnectionString"].ConnectionString;
             sqlconnection = new SqlConnection(connectionString);
-
+            listarTipoVehiculo();
             txtFecha.Text = DateTime.Now.ToString("hh:mm tt");
             //FechaSys.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
@@ -44,6 +44,31 @@ namespace Software_Estacionamiento
             
         }
 
+        private void listarTipoVehiculo()
+        {
+            try
+            {
+
+                string query = "SELECT * FROM Est.Tipo_Vehiculo";
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlconnection);
+
+                using (sqlDataAdapter)
+                {
+                    DataTable tablaTipoVehiculo = new DataTable();
+                    sqlDataAdapter.Fill(tablaTipoVehiculo);
+
+                    cbTipoVehiculo.DisplayMemberPath = "tipo";
+                    cbTipoVehiculo.SelectedValuePath = "id";
+                    cbTipoVehiculo.ItemsSource = tablaTipoVehiculo.DefaultView;
+                }
+
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+        }
+
         private void BtnGuardar_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -55,9 +80,8 @@ namespace Software_Estacionamiento
                 sqlconnection.Open();
 
                 sqlCommand.Parameters.AddWithValue("@tipo_Vehiculo",cbTipoVehiculo.SelectedValue);
-                sqlCommand.Parameters.AddWithValue("@placa", cbTipoVehiculo.Text);
+                sqlCommand.Parameters.AddWithValue("@placa", txtNumPlaca.Text);
                 sqlCommand.Parameters.AddWithValue("@estado", 1);
-                sqlCommand.Parameters.AddWithValue("@placa", cbTipoVehiculo.Text);
                 sqlCommand.Parameters.AddWithValue("@hora_Ingreso", DateTime.Now.ToString("hh:mm tt"));
                 sqlCommand.ExecuteNonQuery();
             }
