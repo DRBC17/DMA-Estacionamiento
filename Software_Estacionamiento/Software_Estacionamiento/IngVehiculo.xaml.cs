@@ -85,37 +85,57 @@ namespace Software_Estacionamiento
 
         private void BtnGuardar_Click(object sender, RoutedEventArgs e)
         {
-            if (txtNumPlaca.Text != IdentificarPlaca().ToString())
+         if(txtNumPlaca.Text != "")
             {
-                try
-                {
-                    string query = "INSERT INTO Est.Vehiculo(tipo_Vehiculo,placa,estado,hora_Ingreso) VALUES(@tipo_Vehiculo,@placa,@estado,@hora_Ingreso)";
-                    SqlCommand sqlCommand = new SqlCommand(query, sqlconnection);
 
-                    // Abrir la conexión
-                    sqlconnection.Open();
+                if (cbTipoVehiculo.SelectedItem != null)
+                {
 
-                    sqlCommand.Parameters.AddWithValue("@tipo_Vehiculo", cbTipoVehiculo.SelectedValue);
-                    sqlCommand.Parameters.AddWithValue("@placa", txtNumPlaca.Text);
-                    sqlCommand.Parameters.AddWithValue("@estado", 1);
-                    sqlCommand.Parameters.AddWithValue("@hora_Ingreso", DateTime.Now.ToString("hh:mm tt"));
-                    sqlCommand.ExecuteNonQuery();
+
+                    if (txtNumPlaca.Text != IdentificarPlaca().ToString())
+                    {
+                        try
+                        {
+                            string query = "INSERT INTO Est.Vehiculo(tipo_Vehiculo,placa,estado,hora_Ingreso) VALUES(@tipo_Vehiculo,@placa,@estado,@hora_Ingreso)";
+                            SqlCommand sqlCommand = new SqlCommand(query, sqlconnection);
+
+                            // Abrir la conexión
+                            sqlconnection.Open();
+
+                            sqlCommand.Parameters.AddWithValue("@tipo_Vehiculo", cbTipoVehiculo.SelectedValue);
+                            sqlCommand.Parameters.AddWithValue("@placa", txtNumPlaca.Text);
+                            sqlCommand.Parameters.AddWithValue("@estado", 1);
+                            sqlCommand.Parameters.AddWithValue("@hora_Ingreso", DateTime.Now.ToString("hh:mm tt"));
+                            sqlCommand.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.ToString());
+                        }
+                        finally
+                        {
+                            sqlconnection.Close();
+                            MessageBox.Show("Se Guardo con exito");
+                        }
+                    }
+
+
+                    else
+                    {
+                        MessageBox.Show("Un Vehiculo con esa placa ya Ingreso");
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.ToString());
-                }
-                finally
-                {
-                    sqlconnection.Close();
-                    MessageBox.Show("Se Guardo con exito");
+                    MessageBox.Show("Debe Seleccionar un Tipo de Vehiculo");
                 }
             }
             else
             {
-                MessageBox.Show("Un Vehiculo con esa placa ya Ingreso");
+                MessageBox.Show("EL Numero De Placa no puede estar vacio");
             }
         }
+
 
         private string IdentificarPlaca()
         {
