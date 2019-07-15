@@ -25,6 +25,8 @@ namespace Software_Estacionamiento
     public partial class RealizarPago : UserControl
     {
         SqlConnection sqlconnection;
+        String Placa;
+        
         public RealizarPago()
         {
             string connectionString = ConfigurationManager.ConnectionStrings["Software_Estacionamiento.Properties.Settings.EstacionamientoConnectionString"].ConnectionString;
@@ -56,9 +58,10 @@ namespace Software_Estacionamiento
             if (lvPanelVehiculos.SelectedItem != null)
             {
 
-
+                MessageBox.Show(Placa);
                 String TipoVehiculo = lvPanelVehiculos.SelectedValue.ToString();
                 String Dato = "";
+                decimal Cobro=0;
 
                 switch (TipoVehiculo)
                 {
@@ -90,6 +93,47 @@ namespace Software_Estacionamiento
                 txtTipoVehiculo.Text = Dato;
             }
         }
+
+        private decimal Cobro( decimal x)
+        {
+
+
+
+
+            return x;
+        }
+
+        private String hora_entrada(string hE)
+        {
+            try{
+                string query = "SELECT hora_Ingreso FROM Est.Vehiculo WHERE id=@id";
+
+                sqlconnection.Open();
+                SqlCommand sqlCommand = new SqlCommand(query, sqlconnection);
+                // Reemplazar el parámetro con su valor respectivo
+                sqlCommand.Parameters.AddWithValue("@id", lvPanelVehiculos.SelectedValue);
+
+                sqlCommand.ExecuteNonQuery();
+                SqlDataReader reader = sqlCommand.ExecuteReader();
+
+                if (reader.Read())
+                {
+                //   hE = Convert.ToString(reader("hora_Ingreso"));
+                    
+                }
+               
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            finally
+            {
+                sqlconnection.Close();
+            }
+
+            return hE;
+        } 
 
         public void ListarEntradas()
         {
@@ -124,6 +168,8 @@ namespace Software_Estacionamiento
         private void BtnActualizarLista_Click(object sender, RoutedEventArgs e)
         {
             lvPanelVehiculos.SelectedItem = null;
+            txtTipoVehiculo.Text = string.Empty;
+            txtTotal.Text = string.Format("00.00");
             ListarEntradas();
         }
     }
