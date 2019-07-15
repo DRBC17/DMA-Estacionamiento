@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using System.Windows.Threading;
 
 namespace Software_Estacionamiento
 {
@@ -31,7 +32,20 @@ namespace Software_Estacionamiento
             string connectionString = ConfigurationManager.ConnectionStrings["Software_Estacionamiento.Properties.Settings.EstacionamientoConnectionString"].ConnectionString;
             sqlconnection = new SqlConnection(connectionString);
             listarTipoVehiculo();
-            txtFecha.Text = DateTime.Now.ToString("hh:mm tt");
+
+            DispatcherTimer dispathcer = new DispatcherTimer();
+
+            
+            dispathcer.Interval = new TimeSpan(0, 0, 1);
+
+            
+            dispathcer.Tick += (s, a) =>
+            {
+               
+                txtFecha.Text = DateTime.Now.ToString("hh:mm tt");
+            };
+            dispathcer.Start();
+            
             //FechaSys.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
         }

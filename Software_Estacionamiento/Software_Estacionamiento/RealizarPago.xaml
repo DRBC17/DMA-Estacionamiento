@@ -23,13 +23,16 @@
 
         <Grid Grid.Row="1">
             <StackPanel Orientation="Horizontal" Margin="15">
-                <StackPanel Orientation="Vertical">
-                    <TextBlock TextAlignment="Center" Foreground="Black" Background="White" FontSize="20">Vehiculos Que Han Ingresado:</TextBlock>
-                    <ListView Width="450" Height="auto"  Background="White" Name="lvPanelVehiculos" SelectionChanged="LvPanelVehiculos_SelectionChanged" ></ListView>
+                <StackPanel Orientation="Vertical" Background="White" Height="308">
+                    <TextBlock TextAlignment="Center" Foreground="Black" Background="White" FontSize="20">| Vehiculos Ingresados |</TextBlock>
+                    <ListView Width="auto" Height="250"  Name="lvPanelVehiculos" SelectionChanged="LvPanelVehiculos_SelectionChanged" Foreground="Crimson"  FontSize="24" ></ListView>
+                    <Button Name="btnActualizarLista" Content="Actualizar Lista" Height="auto" FontSize="18" Background="Gray" Click="BtnActualizarLista_Click"></Button>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="30">
                     <TextBlock Foreground="White" FontSize="24" Margin="10" >Hora de Salida</TextBlock>
                     <TextBlock  Name="txtFecha" FontSize="24" Width="120" Height="34" Background="White"  Foreground="Black"  TextAlignment="Center"></TextBlock>
+                    <TextBlock Foreground="White" FontSize="24" Margin="10" >Tipo de Vehiculo</TextBlock>
+                    <TextBlock  Name="txtTipoVehiculo" FontSize="24" Width="auto" Height="34" Background="White"  Foreground="Black"  TextAlignment="Center"></TextBlock>
                     <TextBlock FontSize="24" Foreground="White" TextAlignment="Center" Margin="0 30 0 0">TOTAL:</TextBlock>
                     <TextBlock Width="AUTO" Height="50" Foreground="White" FontSize="40" TextAlignment="Center">00.00</TextBlock>
                     <Button Width="auto" Height="50" Foreground="Black" Background="Gray" FontSize="24" Margin="0 40 0 0" Name="btnPagar" Click="BtnPagar_Click">
