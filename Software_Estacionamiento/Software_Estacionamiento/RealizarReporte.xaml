@@ -16,7 +16,11 @@
             <TextBlock FontSize="45" Foreground="White" Margin="25 0 0 0">Realizar Reporte</TextBlock>
         </Grid>
         <Grid Grid.Row="1" Margin="20">
-            <ListView Background="White" Height="auto" Width="700" Name="lvRealizarReporte"></ListView>
+            <StackPanel Orientation="Vertical">
+                <Button x:Name="btnActualizar" Content="Actualizar Reportes" Click="BtnActualizar_Click"></Button>
+               <DataGrid Background="White" Height="300" Width="700" Name="DGRealizarReporte" FontSize="24"></DataGrid> 
+            </StackPanel>
+            
             
         </Grid>
     </Grid>

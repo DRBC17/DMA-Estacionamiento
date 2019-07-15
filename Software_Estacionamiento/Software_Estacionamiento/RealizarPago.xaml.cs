@@ -53,12 +53,13 @@ namespace Software_Estacionamiento
         {
             try
             {
-                string query = "INSERT INTO Est.Pago_Vehiculo(vehiculo,fechaHoraEntrada,fechaHoraSalida) VALUES(@Vehiculo,@Entrada,@Salida)";
+                string query = "INSERT INTO Est.Pago_Vehiculo(vehiculo,fechaHoraEntrada,fechaHoraSalida,total) VALUES(@Vehiculo,@Entrada,@Salida,@total)";
                 SqlCommand sqlCommand = new SqlCommand(query, sqlconnection);
 
                 sqlCommand.Parameters.AddWithValue("@Vehiculo", Id_Vehiculo().ToString());
                 sqlCommand.Parameters.AddWithValue("@Entrada", hora_entrada_C().ToString());
                 sqlCommand.Parameters.AddWithValue("@Salida", DateTime.Now.ToString("hh:mm tt"));
+                sqlCommand.Parameters.AddWithValue("@total",txtTotal.Text=string.Format("{0:0.0.0}", Cobro()));
                 // Abrir la conexión
                 sqlconnection.Open();
 
@@ -146,7 +147,7 @@ namespace Software_Estacionamiento
                 }
                 txtTipoVehiculo.Text = Dato;
                 imprimirHora();
-                txtTotal.Text = string.Format("LPS {0:0.0}", Cobro());
+                txtTotal.Text = string.Format("LPS {0:0.0.0}", Cobro());
 
 
             }
@@ -236,6 +237,11 @@ namespace Software_Estacionamiento
                     {
                         x = (int.Parse(horastotal) + 1)*15;
                     }
+                    else
+                    {
+                        x = (int.Parse(horastotal)) * 15;
+                       
+                    }
 
 
                    
@@ -246,7 +252,7 @@ namespace Software_Estacionamiento
                 }
             }else if (int.Parse(IdentificarTipo()) >= 4 && int.Parse(IdentificarTipo()) <= 6)
             {
-                if (minutos > 0 && minutos < 60)
+                if (minutos >= 0 && minutos < 60)
                 {
                     x = 20*2;
 
@@ -276,13 +282,18 @@ namespace Software_Estacionamiento
                         x = (int.Parse(horastotal) + 1) * 15;
                         x = x * 2;
                     }
+                    else
+                    {
+                        x = (int.Parse(horastotal)) * 15;
+                        x = x * 2;
+                    }
 
 
 
                 }
-            }else if (int.Parse(IdentificarTipo()) ==6)
+            }else
             {
-                if (minutos > 0 && minutos < 60)
+                if (minutos >= 0 && minutos < 60)
                 {
                     x = 20*0.5;
 
@@ -310,6 +321,11 @@ namespace Software_Estacionamiento
                     if (int.Parse(w) > 0)
                     {
                         x = (int.Parse(horastotal) + 1) * 15;
+                        x = x * 0.5;
+                    }
+                    else
+                    {
+                        x = (int.Parse(horastotal)) * 15;
                         x = x * 0.5;
                     }
 
