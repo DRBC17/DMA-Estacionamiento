@@ -1,1 +1,1 @@
-﻿	Select * From Est.Vehiculo;
+﻿SELECT * FROM Est.Vehiculo WHERE estado = 0
