@@ -66,19 +66,20 @@ namespace Software_Estacionamiento
             try
             {
 
+
                 string query = "SELECT * FROM Est.Vehiculo WHERE estado = 0";
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, sqlconnection);
 
                 using (sqlDataAdapter)
                 {
-                    DataTable tablaSalidas = new DataTable();
-                    sqlDataAdapter.Fill(tablaSalidas);
+                    DataTable tablaEntradas = new DataTable();
+                    sqlDataAdapter.Fill(tablaEntradas);
 
-                    cbListar.DisplayMemberPath = "placa";
-                    cbListar.SelectedValuePath = "id";
-                    cbListar.ItemsSource = tablaSalidas.DefaultView;
+                    lvListar.DisplayMemberPath = "placa";
+
+                    lvListar.SelectedValuePath = "id";
+                    lvListar.ItemsSource = tablaEntradas.DefaultView;
                 }
-
             }
             catch (Exception e)
             {
