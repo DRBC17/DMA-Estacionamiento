@@ -18,9 +18,14 @@
         <Grid Grid.Row="1">
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
                 <TextBlock FontSize="24" Foreground="White" TextAlignment="Center" Margin="10">Listar:</TextBlock>
-                <ComboBox Width="150" Height="30" FontSize="24" Background="White" Foreground="Black" Name="cbListar" SelectionChanged="CbListar_SelectionChanged"></ComboBox>
-                <ListView Width="600" Height="auto" Background="White" Margin="10" Name="lvListar" ></ListView>
-                
+                <ComboBox Width="150" Height="auto" FontSize="24" Background="White" Foreground="Black" Name="cbListar" SelectionChanged="CbListar_SelectionChanged">
+                    <ComboBoxItem Name="Entrada">Entrada</ComboBoxItem>
+                    <ComboBoxItem Name="Salida">Salida</ComboBoxItem>
+                </ComboBox>
+                <Grid Background="White">
+                    <ListView Width="600" Height="auto" Background="White" Margin="10" Name="lvListar" Foreground="Black"></ListView>
+
+                </Grid>
             </StackPanel>
             
         </Grid>
