@@ -33,6 +33,8 @@
                     <TextBlock  Name="txtFecha" FontSize="24" Width="120" Height="34" Background="White"  Foreground="Black"  TextAlignment="Center"></TextBlock>
                     <TextBlock Foreground="White" FontSize="24" Margin="10" >Tipo de Vehiculo</TextBlock>
                     <TextBlock  Name="txtTipoVehiculo" FontSize="24" Width="auto" Height="34" Background="White"  Foreground="Black"  TextAlignment="Center"></TextBlock>
+                    <TextBlock>Horas</TextBlock>
+                    <TextBlock x:Name="txtHorasT"></TextBlock>
                     <TextBlock FontSize="24" Foreground="White" TextAlignment="Center" Margin="0 30 0 0">TOTAL:</TextBlock>
                     <TextBlock Width="AUTO" Height="50" Foreground="White" FontSize="40" TextAlignment="Center" Name="txtTotal">00.00</TextBlock>
                     <Button Width="auto" Height="50" Foreground="Black" Background="Gray" FontSize="24" Margin="0 40 0 0" Name="btnPagar" Click="BtnPagar_Click">
