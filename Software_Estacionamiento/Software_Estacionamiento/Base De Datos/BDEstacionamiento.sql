@@ -46,7 +46,7 @@ CREATE TABLE Est.Vehiculo
 		CONSTRAINT CHK_Formato_Placa_Vehiculo
 		CHECK (placa LIKE '[A-Z][A-Z][A-Z]-[0-9][0-9][0-9][0-9]'),
 	estado BIT NOT NULL,
-	hora_Ingreso datetime NOT NULL
+	hora_Ingreso time NOT NULL
 )
 GO
 
@@ -57,8 +57,8 @@ CREATE TABLE Est.Pago_Vehiculo
 		CONSTRAINT PK_Vehiculo_PagoVehiculo_id
 		PRIMARY KEY CLUSTERED (id),
 	vehiculo INT NOT NULL,
-	fechaHoraEntrada DATETIME NOT NULL,
-	fechaHoraSalida DATETIME NOT NULL
+	fechaHoraEntrada TIME NOT NULL,
+	fechaHoraSalida TIME NOT NULL
 )
 GO
 
