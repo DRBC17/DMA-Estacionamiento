@@ -51,6 +51,10 @@ namespace Software_Estacionamiento
 
         private void BtnPagar_Click(object sender, RoutedEventArgs e)
         {
+            if(lvPanelVehiculos.SelectedItem != null)
+            {
+
+           
             try
             {
                 string query = "INSERT INTO Est.Pago_Vehiculo(vehiculo,fechaHoraEntrada,fechaHoraSalida,total) VALUES(@Vehiculo,@Entrada,@Salida,@total)";
@@ -72,7 +76,8 @@ namespace Software_Estacionamiento
             }
             finally
             {
-                sqlconnection.Close();
+                    MessageBox.Show("Se pago con exito");
+                    sqlconnection.Close();
                 Actualizar_Vehiculo();
                 lvPanelVehiculos.SelectedItem = null;
                 txtTipoVehiculo.Text = string.Empty;
@@ -80,6 +85,11 @@ namespace Software_Estacionamiento
                 txtTotal.Text = string.Format("00.00");
                 ListarEntradas();
 
+            }
+            }
+            else
+            {
+                MessageBox.Show("Debe escoger una placa para Pagar");
             }
         }
         private void Actualizar_Vehiculo()
