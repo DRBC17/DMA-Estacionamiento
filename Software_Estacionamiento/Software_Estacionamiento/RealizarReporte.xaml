@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="Software_Estacionamiento.RealizarReporte"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Software_Estacionamiento"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <TextBlock FontSize="45" Foreground="White" Margin="25 0 0 0">Realizar Reporte</TextBlock>
+        </Grid>
+        <Grid Grid.Row="1" Margin="20">
+            <StackPanel Orientation="Vertical">
+                <Button x:Name="btnActualizar" Content="Actualizar Reportes" Click="BtnActualizar_Click"></Button>
+               <DataGrid Background="White" Height="300" Width="700" Name="DGRealizarReporte" FontSize="24"></DataGrid> 
+            </StackPanel>
+            
+            
+        </Grid>
+    </Grid>
+</UserControl>

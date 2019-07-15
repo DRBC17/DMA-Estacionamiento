@@ -1,0 +1,1 @@
+﻿SELECT * FROM Est.Vehiculo WHERE estado = 0

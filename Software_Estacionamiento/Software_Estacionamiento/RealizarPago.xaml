@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="Software_Estacionamiento.RealizarPago"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Software_Estacionamiento"
+             
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF" 
+             
+             
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <TextBlock FontSize="45" Foreground="White" Margin="25 0 0 0">Realizar Pago</TextBlock>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Horizontal" Margin="15">
+                <StackPanel Orientation="Vertical" Background="White" Height="308">
+                    <TextBlock TextAlignment="Center" Foreground="Black" Background="White" FontSize="20">| Vehiculos Ingresados |</TextBlock>
+                    <ListView Width="auto" Height="250"  Name="lvPanelVehiculos" SelectionChanged="LvPanelVehiculos_SelectionChanged" Foreground="Crimson"  FontSize="24" ></ListView>
+                    <Button Name="btnActualizarLista" Content="Actualizar Lista" Height="auto" FontSize="18" Background="Gray" Click="BtnActualizarLista_Click"></Button>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="30">
+                    <TextBlock Foreground="White" FontSize="24" Margin="10" >Hora de Salida</TextBlock>
+                    <TextBlock  Name="txtFecha" FontSize="24" Width="120" Height="34" Background="White"  Foreground="Black"  TextAlignment="Center"></TextBlock>
+                    <TextBlock Foreground="White" FontSize="24" Margin="10" >Tipo de Vehiculo</TextBlock>
+                    <TextBlock  Name="txtTipoVehiculo" FontSize="24" Width="auto" Height="34" Background="White"  Foreground="Black"  TextAlignment="Center"></TextBlock>
+                    <TextBlock>Horas</TextBlock>
+                    <TextBlock x:Name="txtHorasT"></TextBlock>
+                    <TextBlock FontSize="24" Foreground="White" TextAlignment="Center" Margin="0 30 0 0">TOTAL:</TextBlock>
+                    <TextBlock Width="AUTO" Height="50" Foreground="White" FontSize="40" TextAlignment="Center" Name="txtTotal">00.00</TextBlock>
+                    <Button Width="auto" Height="50" Foreground="Black" Background="Gray" FontSize="24" Margin="0 40 0 0" Name="btnPagar" Click="BtnPagar_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="CashMultiple" Width="30" Height="30" Foreground="White" Margin="0 0 10 0"/>
+                            <TextBlock>Pagar</TextBlock>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>
