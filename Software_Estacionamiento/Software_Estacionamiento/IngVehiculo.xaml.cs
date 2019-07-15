@@ -85,28 +85,69 @@ namespace Software_Estacionamiento
 
         private void BtnGuardar_Click(object sender, RoutedEventArgs e)
         {
+            if (txtNumPlaca.Text != IdentificarPlaca().ToString())
+            {
+                try
+                {
+                    string query = "INSERT INTO Est.Vehiculo(tipo_Vehiculo,placa,estado,hora_Ingreso) VALUES(@tipo_Vehiculo,@placa,@estado,@hora_Ingreso)";
+                    SqlCommand sqlCommand = new SqlCommand(query, sqlconnection);
+
+                    // Abrir la conexión
+                    sqlconnection.Open();
+
+                    sqlCommand.Parameters.AddWithValue("@tipo_Vehiculo", cbTipoVehiculo.SelectedValue);
+                    sqlCommand.Parameters.AddWithValue("@placa", txtNumPlaca.Text);
+                    sqlCommand.Parameters.AddWithValue("@estado", 1);
+                    sqlCommand.Parameters.AddWithValue("@hora_Ingreso", DateTime.Now.ToString("hh:mm tt"));
+                    sqlCommand.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                finally
+                {
+                    sqlconnection.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Un Vehiculo con esa placa ya Ingreso");
+            }
+        }
+
+        private string IdentificarPlaca()
+        {
+            string tipoV = "";
             try
             {
-                string query = "INSERT INTO Est.Vehiculo(tipo_Vehiculo,placa,estado,hora_Ingreso) VALUES(@tipo_Vehiculo,@placa,@estado,@hora_Ingreso)";
-                SqlCommand sqlCommand = new SqlCommand(query, sqlconnection);
+                string query = "SELECT placa FROM Est.Vehiculo WHERE placa=@placa";
 
-                // Abrir la conexión
                 sqlconnection.Open();
-
-                sqlCommand.Parameters.AddWithValue("@tipo_Vehiculo",cbTipoVehiculo.SelectedValue);
+                SqlCommand sqlCommand = new SqlCommand(query, sqlconnection);
+                // Reemplazar el parámetro con su valor respectivo
                 sqlCommand.Parameters.AddWithValue("@placa", txtNumPlaca.Text);
-                sqlCommand.Parameters.AddWithValue("@estado", 1);
-                sqlCommand.Parameters.AddWithValue("@hora_Ingreso", DateTime.Now.ToString("hh:mm tt"));
+
                 sqlCommand.ExecuteNonQuery();
+                SqlDataReader reader = sqlCommand.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    tipoV = reader["placa"].ToString();
+
+                }
+
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(e.ToString());
             }
             finally
             {
                 sqlconnection.Close();
             }
+
+            return tipoV;
         }
 
         private void TxtTipoVehiculo_SelectionChanged(object sender, SelectionChangedEventArgs e)

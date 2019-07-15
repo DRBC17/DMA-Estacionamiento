@@ -25,7 +25,7 @@ namespace Software_Estacionamiento
     public partial class RealizarPago : UserControl
     {
         SqlConnection sqlconnection;
-        int horasTT=0;
+      
 
         public RealizarPago()
         {
@@ -53,7 +53,7 @@ namespace Software_Estacionamiento
         {
             try
             {
-                string query = "INSERT INTO Est.Pago_Vehiculo(vehiculo,fechaHoraEntrada,fechaHoraEntrada) VALUES(@Vehiculo,@Entrada,@Salida)";
+                string query = "INSERT INTO Est.Pago_Vehiculo(vehiculo,fechaHoraEntrada,fechaHoraSalida) VALUES(@Vehiculo,@Entrada,@Salida)";
                 SqlCommand sqlCommand = new SqlCommand(query, sqlconnection);
 
                 sqlCommand.Parameters.AddWithValue("@Vehiculo", Id_Vehiculo().ToString());
@@ -85,7 +85,7 @@ namespace Software_Estacionamiento
         {
             try
             {
-                string query = "UPDATE Est.Vehiculo SET estad = @estado WHERE id = @id";
+                string query = "UPDATE Est.Vehiculo SET estado = @estado WHERE id = @id";
 
                 SqlCommand sqlCommand = new SqlCommand(query, sqlconnection);
                 sqlCommand.Parameters.AddWithValue("@id", Id_Vehiculo());
@@ -203,15 +203,17 @@ namespace Software_Estacionamiento
         {
             Double x=0;
             int minutos = Horas();
+          
             if (int.Parse(IdentificarTipo()) >=0 && int.Parse(IdentificarTipo()) <= 3)
             {
-                if (minutos > 0 && minutos < 60)
+                if (minutos >= 0 && minutos < 60)
                 {
                     x = 20;
 
                 }
                 else if (minutos > 60 && minutos < 120)
                 {
+                    
                     x = 30;
                 }
                 else if (minutos > 120 && minutos < 240)
@@ -316,7 +318,7 @@ namespace Software_Estacionamiento
                 }
             }
 
-
+           
             return x;
         }
 
@@ -385,9 +387,9 @@ namespace Software_Estacionamiento
                 sqlconnection.Close();
             }
 
-         
-         
+
             return hE;
+
         }
 
         private int Id_Vehiculo()
@@ -526,7 +528,7 @@ namespace Software_Estacionamiento
             {
                 sqlconnection.Close();
             }
-
+           
             return tipoV;
         }
 
