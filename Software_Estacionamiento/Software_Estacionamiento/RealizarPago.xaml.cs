@@ -34,6 +34,7 @@ namespace Software_Estacionamiento
 
             InitializeComponent();
             ListarEntradas();
+            txtHorasT.Text = "0";
             DispatcherTimer dispathcer = new DispatcherTimer();
 
 
@@ -50,7 +51,59 @@ namespace Software_Estacionamiento
 
         private void BtnPagar_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                string query = "INSERT INTO Est.Pago_Vehiculo(vehiculo,fechaHoraEntrada,fechaHoraEntrada) VALUES(@Vehiculo,@Entrada,@Salida)";
+                SqlCommand sqlCommand = new SqlCommand(query, sqlconnection);
 
+                sqlCommand.Parameters.AddWithValue("@Vehiculo", Id_Vehiculo().ToString());
+                sqlCommand.Parameters.AddWithValue("@Entrada", hora_entrada_C().ToString());
+                sqlCommand.Parameters.AddWithValue("@Salida", DateTime.Now.ToString("hh:mm tt"));
+                // Abrir la conexión
+                sqlconnection.Open();
+
+               
+                sqlCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                sqlconnection.Close();
+                Actualizar_Vehiculo();
+                lvPanelVehiculos.SelectedItem = null;
+                txtTipoVehiculo.Text = string.Empty;
+                txtHorasT.Text = string.Format("0");
+                txtTotal.Text = string.Format("00.00");
+                ListarEntradas();
+
+            }
+        }
+        private void Actualizar_Vehiculo()
+        {
+            try
+            {
+                string query = "UPDATE Est.Vehiculo SET estad = @estado WHERE id = @id";
+
+                SqlCommand sqlCommand = new SqlCommand(query, sqlconnection);
+                sqlCommand.Parameters.AddWithValue("@id", Id_Vehiculo());
+                sqlCommand.Parameters.AddWithValue("@estado", 0);
+                sqlconnection.Open();
+
+             
+                sqlCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                sqlconnection.Close();
+             
+            }
         }
 
         private void LvPanelVehiculos_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -269,6 +322,41 @@ namespace Software_Estacionamiento
 
         private String hora_entrada()
         {
+            string hE = "";
+            try
+            {
+                string query = "SELECT hora_Ingreso FROM Est.Vehiculo WHERE placa=@placa";
+
+                sqlconnection.Open();
+                SqlCommand sqlCommand = new SqlCommand(query, sqlconnection);
+                // Reemplazar el parámetro con su valor respectivo
+                sqlCommand.Parameters.AddWithValue("@placa", lvPanelVehiculos.SelectedValue);
+
+                sqlCommand.ExecuteNonQuery();
+                SqlDataReader reader = sqlCommand.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    hE = reader["hora_Ingreso"].ToString();
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            finally
+            {
+                sqlconnection.Close();
+            }
+
+
+            hE = hE.Substring(0, 2);
+            return hE;
+        }
+        private String hora_entrada_C()
+        {
             string hE ="";
             try{
                 string query = "SELECT hora_Ingreso FROM Est.Vehiculo WHERE placa=@placa";
@@ -298,9 +386,49 @@ namespace Software_Estacionamiento
             }
 
          
-            hE=hE.Substring(0, 2);
+         
             return hE;
         }
+
+        private int Id_Vehiculo()
+        {
+            int id = 0;
+
+            try
+            {
+                string query = "SELECT id FROM Est.Vehiculo WHERE placa=@placa";
+
+                sqlconnection.Open();
+                SqlCommand sqlCommand = new SqlCommand(query, sqlconnection);
+                // Reemplazar el parámetro con su valor respectivo
+                sqlCommand.Parameters.AddWithValue("@placa", lvPanelVehiculos.SelectedValue);
+
+                sqlCommand.ExecuteNonQuery();
+                SqlDataReader reader = sqlCommand.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    string x;
+                    x = reader["id"].ToString();
+                    id = int.Parse(x);
+
+                }
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+            }
+            finally
+            {
+                sqlconnection.Close();
+            }
+
+
+            
+            return id;
+        }
+
         private String Minutos_entrada()
         {
             string hE = "";
@@ -365,6 +493,7 @@ namespace Software_Estacionamiento
             {
                 MessageBox.Show(e.ToString());
             }
+           
         }
 
         private string IdentificarTipo()
@@ -405,6 +534,7 @@ namespace Software_Estacionamiento
         {
             lvPanelVehiculos.SelectedItem = null;
             txtTipoVehiculo.Text = string.Empty;
+            txtHorasT.Text = string.Format("0");
             txtTotal.Text = string.Format("00.00");
             ListarEntradas();
         }
