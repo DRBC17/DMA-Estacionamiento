@@ -88,20 +88,21 @@ namespace Software_Estacionamiento
         }
         private void CbListar_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //String Dato = cbListar.SelectedItem.ToString();
-            //MessageBox.Show(Dato);
-            //if (Dato=="Entrada")
-            //{
-                ListarEntradas();
-            //}
-            //else if(Dato=="Salida")
-            //{
-            //    ListarSalida();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Holis");
-            //}
+            switch(cbListar.SelectedIndex)
+            {
+                case 0:
+                    ListarEntradas();
+                    break;
+                case 1:
+                    ListarSalida();
+                    break;
+                default:
+
+                    break;
+
+                 
+
+            }
 
         }
     }
